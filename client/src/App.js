@@ -1,24 +1,22 @@
-import './App.css';
-
-import { useEffect } from 'react';
+import { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 import socket from "./API/socket";
+import Routing from "./containers/Routing";
+
+import "./App.css";
 
 function App() {
   useEffect(() => {
     socket.connect();
     return () => {
       socket.close();
-    }
+    };
   }, []);
 
-  function sendEvent() {
-    socket.send("Con gà");
-  }
-
   return (
-    <div className="App">
-      <button onClick={sendEvent}>Send event</button>
-    </div>
+    <BrowserRouter>
+      <Routing />
+    </BrowserRouter>
   );
 }
 
