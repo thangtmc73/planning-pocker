@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import ListCards from "./ListCards";
 
 function RoomPage() {
   const { roomId } = useParams();
@@ -17,7 +18,7 @@ function RoomPage() {
   if (!nameSubmitded) {
     return (
       <div>
-        <h1>Room {roomId}</h1>
+        <h1>Room: {roomId}</h1>
         <input
           placeholder="Type your name"
           value={name}
@@ -27,7 +28,13 @@ function RoomPage() {
       </div>
     );
   }
-  return <div>{name}</div>;
+  return (
+    <div>
+      <h1>Room: {roomId}</h1>
+      <h2>Name: {name}</h2>
+      <ListCards />
+    </div>
+  );
 }
 
 export default RoomPage;
